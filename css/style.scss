@@ -1,0 +1,1021 @@
+@charset "utf-8";
+@import 'compass';
+
+html {
+  font-size: 55%;
+}
+
+body {
+  background-color: #f9f8f6;
+}
+
+@mixin fontsize($size: 24, $base: 10) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+$keycolor : #887f69;
+$m : margin;
+
+.navi_space {
+  margin-top: 23px;
+  padding-bottom: 0;
+}
+
+.header_in {
+  margin:{
+    top: 30px;
+    bottom: 30px;
+  }
+}
+
+.header_in_sp {
+  margin-bottom: 8px;
+}
+
+h1{
+  margin-bottom: 0;
+}
+
+.pc_navi_li {
+  margin-bottom: 0;
+  text-align: right;
+  
+  li {
+      list-style: none;
+      display: inline-block; 
+      
+    a {
+        color: $keycolor;
+        text-decoration: none; 
+       }
+       
+  }  // li
+  
+  .cart {
+    margin-left: 16px;
+      }
+  .mypage {
+    margin-left: 16px;
+  }
+  .guide {
+    margin-left: 16px;
+  }
+  .facebook {
+    margin-left: 10px;
+  }
+  .insta {
+    margin-left: 10px;
+  }
+  
+}  //.pc_navi_li 
+
+//spサイズ　ロゴ
+.logo_sp {
+  @include display-flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.sp_navi_li {
+  list-style: none;
+  @include display-flex;
+  justify-content: center;
+  margin-bottom: 0;
+  
+  li {
+    display: inline;
+    margin: 1px 6px;
+  }
+}
+//spサイズ　ロゴここまで
+
+.top_items_column {
+  @include display-flex;
+  flex-wrap: wrap;
+  
+  @media (max-width: 550px){
+    div {
+      flex: 45%;
+      background-color: white;
+      margin-bottom: 2px;
+      padding: 2%;
+      
+      p {
+        margin-bottom: 10px;
+      }
+      
+    }  //div
+    
+    div:not(:nth-child(2n)) {margin-right: 2px;}  //2の倍数のdiv要素はマージンを無効
+    
+    div:nth-last-child(1){max-width: 46%;}  //最後のアイテムの右に余白を作る
+    
+  }  // @media (max-width: 550px)
+  
+  @media (min-width: 550px){
+    div {
+      flex: 25%;
+      background-color: white;
+      margin-bottom: 2px;
+      padding: 2%;
+      
+      p {
+        margin-bottom: 10px;
+      }
+      
+    }  //div
+    
+    div:not(:nth-child(3n)) {margin-right: 2px;}  //3の倍数のdiv要素はマージンを無効
+    
+  }  //@media (min-width: 550px)
+
+    img {
+      max-width: 100%;
+    }
+
+}  //.top_items_column
+
+.top_guide_column {
+  @include display-flex;
+  flex-wrap: wrap;
+  
+  div {
+    @media (min-width: 550px) {
+      flex: 1;
+    }
+    
+    background-color: white;
+    
+    padding: 2.5% 4%;
+    
+    margin-right: 6px;
+    
+    h5 {
+      font-size: 1.8rem;
+      color: $keycolor;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    
+    h6 {
+      color: $keycolor;
+      font-weight: bold;
+      margin: 4px 0;
+      span {
+        font-size: 2.5rem;
+      }
+    }
+    
+    .settlement_about {
+      margin-bottom: 4px;
+    }
+    
+    p {
+      margin-bottom: 12px;
+    }
+    
+    .images_car {
+      max-width: 100%;
+    }
+    
+    .images_cards {
+      max-width: 100%;
+    }
+    
+  } //div
+  
+  @media (max-width: 550px) {
+    .deliver {
+      width: 100%;
+    }
+    
+    .settlement {
+      width: 100%;
+    }
+    
+    div {
+      margin:{
+        bottom: 1rem;
+        right: 0;
+      }
+    }
+  }
+ 
+}  //.top_guide_column 
+
+.aside {
+  .item_serch {
+    padding: {
+      top: 6%;
+    }
+    
+    img {
+      padding:{
+        left: 10%;
+        right: 10%;
+      }
+      
+      max-width: 90%;
+    }
+    
+    background-color: white;
+    
+    .form { 
+      background-color: #f9f8f6;
+      border: none;  //枠を消す
+      
+      //検索フォームに虫眼鏡の画像を入れる
+      background-image: url("../images/top/search_icon.png");
+      background-repeat: no-repeat;
+      background-position: right 5px center; // X座標　端からの距離　Y座標
+      
+      //フォームの幅をitem_serchBOXの２０％、左に１０％のマージンを取ることで、センターに固定
+      width: 80%;
+      margin-left: 10%;
+      margin-bottom: 15%;
+    }
+    
+    @media (max-width: 550px) {
+      
+        padding: {
+          top: 20px;
+          bottom: 20px;
+        }
+        
+        margin:{
+          top: 1rem;
+          bottom: 2rem;
+        }
+      
+      img {
+        display: none; 
+      }
+      
+      form {
+        margin-bottom: 0;
+        
+        .form  {
+          margin-bottom: 0;
+        }
+        
+      }
+    }  //@media (max-width: 550px) 
+  }  //.item_serch
+
+//フォームの文字色  
+  @mixin placeholder($color) {
+    &::placeholder {
+      color: $color;
+    }
+  }
+  input {
+    @include placeholder(#e2ddd4);
+  }
+//  フォームの文字色ここまで
+
+  form {
+    margin-bottom: 1rem;
+  }
+  
+  .pageLink {
+    
+    &:hover {
+      cursor: pointer;
+    }
+  
+    img {
+      max-width: 100%;
+    }
+    
+    padding: 5%;
+    margin-bottom: 1rem;
+    
+    background: {
+      image: url("../images/top/next_icon.png");
+      repeat: no-repeat;
+      position: right 10px center; // X座標　端からの距離　Y座標
+      color: $keycolor;
+    }
+    
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    
+  }  //.pageLink
+  
+  .categories {
+    
+    .title {
+      
+      &:hover {
+        cursor: pointer;
+      }
+      
+      img {
+      max-width: 100%;
+      }
+    
+      padding: 5%;
+    
+      background:{
+        color: $keycolor;
+        //image: url("../images/top/down_icon.png");
+        //repeat: no-repeat;
+        //position: right 10px center; // X座標　端からの距離　Y座標
+      }
+      
+      a{
+        color: white;
+        text-decoration: none;
+      }
+      
+    }  //.title
+    
+    .under {
+      background:{
+        image: url("../images/top/down_icon.png");
+        repeat: no-repeat;
+        position: right 10px center; // X座標　端からの距離　Y座標
+      }
+    }
+    
+    .right {
+      background:{
+        image: url("../images/top/next_icon.png");
+        repeat: no-repeat;
+        position: right 10px center; // X座標　端からの距離　Y座標
+      }
+    }
+    
+    .categories_name {
+      padding: 5%;
+      
+      background:{
+        image: url("../images/top/next_icon_gray.png");
+        repeat: no-repeat;
+        position: right 10px center; // X座標　端からの距離　Y座標
+        color: white;
+      }
+      
+      margin-bottom: 1px;
+        
+    }  //.categories_name
+  } //.categories
+  
+  .open:hover {  
+    color: #0FA0CE;
+     cursor: pointer;
+  }
+  
+  .about {
+    
+     background-color: white;
+     margin-top: 1rem;
+     
+    .title {
+      background-color: $keycolor;
+      
+      img {
+        max-width: 100%;
+      }
+    
+      padding: 5%;
+      
+      a{
+        text-decoration: none;
+      }
+      
+    }  //.title
+    .flex_container {
+      padding: 4% 4% 0 4%;
+    }
+    
+    .about_img {
+      max-width: 100%;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    } 
+    
+    a{
+      text-decoration: none;
+      padding-bottom: 2rem;
+    }
+      
+  }  //.about
+    
+  @media (max-width: 550px){
+    .about {
+      .flex_container {
+       @include display-flex;
+      }
+        flex: 1; 
+        
+      .about_img_div {
+        padding-right: 3%;
+      }
+        
+      .about_img {
+        width: 460px;
+      }
+      
+      p {
+        margin-bottom: 0;
+      }
+  
+    } //.about
+  }  //@media (max-width: 550px)
+    
+  .shop_info {
+    
+     background-color: white;
+     margin-top: 1rem;
+     
+    .title {
+      background-color: $keycolor;
+      
+      img {
+        max-width: 100%;
+      }
+    
+      padding: 5%;
+      
+      a{
+        text-decoration: none;
+      }
+      
+    }  //.title
+    .flex_container {
+      padding: 4% 4% 0 4%;
+    }
+    
+    .shopinfo_img {
+      max-width: 100%;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    } 
+    
+    a{
+      text-decoration: none;
+      padding-bottom: 2rem;
+    }
+      
+  }  //.shop_info
+    
+  @media (max-width: 550px){
+    .shop_info {
+      .flex_container {
+       @include display-flex;
+      }
+        flex: 1; 
+        
+      .about_img_div {
+        padding-right: 3%;
+      }
+        
+      .shopinfo_img {
+        width: 460px;
+      }
+      
+      p {
+        margin-bottom: 0;
+      }
+  
+    } //.shop_info
+  }  //@media (max-width: 550px)
+    
+    
+  .more {
+    @media (min-width: 550px){
+      @include display-flex;
+      justify-content: center;
+    }
+  }
+    
+} //.aside
+
+.breadcrumbs { // パンくずリスト
+  list-style: none;
+  background-color: #e2ddd4;
+  margin-bottom: 8px;
+  padding: 1%;
+  border-radius: 4px;  //角を丸く
+  
+  li {
+    display: inline;
+  } 
+  
+  li:after {  //パンくずリストに 「/」を表示
+    content: '/';
+    color: $keycolor;
+  }
+    
+  li:last-child:after {   // 最後に「/」を表示しない
+    content: '';
+  }
+  
+  a {
+    color: $keycolor;
+    text-decoration: none;
+    margin: 0 5px;
+    &:hover {
+      cursor: point;
+      color: darken($keycolor, 10%);
+    }
+  }
+  
+}  //.breadcrumbs
+
+.to_pagetop {
+  text-align: right;
+  margin-bottom: 10px;
+  
+  @media (max-width: 550px){
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.main_row {
+  padding-bottom: 4rem;
+}
+
+@media (max-width: 550px){
+  .pagetop_img {
+    width: 40%;
+  }
+  .main_row {
+    padding-bottom: 2rem;
+  }
+}
+
+.bottom_hr { //フッター上の横ライン
+  height: 1px;
+  border: none;
+  border-top: 1px $keycolor solid;
+  margin-top: 10px;
+  
+  @media (max-width: 550px){
+    margin-bottom: 15px;
+  }
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 140px;
+  
+  li {
+    list-style: none;
+    display: inline;
+    
+    a {
+      color: black;
+      text-decoration: none;
+      @media (min-width: 550px){
+        padding: {
+          left: 1rem; 
+          right: 1rem; 
+        }
+      }
+    }
+    
+  } // li
+    
+  li:after {  //フッターメニューに 「・」を表示
+    content: '・';
+  }
+    
+  li:last-child:after {   // 最後に「・」を表示しない
+    content: '';
+  }  
+  
+  p {
+    color: $keycolor;
+    //font-size: 2rem;
+    }
+    
+  @media (max-width: 550px){
+    padding: 0px 40px 50px 40px;  //フッターの余白
+    
+    ul {
+      margin-bottom: 5px;
+    }
+    
+    a {
+      font-size: 1.3rem;
+      padding: {
+        left: 0; 
+        right: 0; 
+      }
+    }
+    
+    p {
+      font-size: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+    
+  }  //@media 
+  
+}  //footer 
+
+// pruducts.html 写真のサイズ、表示・非表示
+/* 各タブのコンテンツはデフォルトで非表示 */
+.product_names {
+  @media (max-width: 550px) {
+    padding: 5% 5% 0 6%;
+  }
+ 
+  @media (min-width: 550px) {
+    display: flex;
+    padding: 5% 10% 0 10%;
+  }
+  
+  .product_name {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .product_number {
+    color: #b0b0b0;
+  }
+
+  .product_number {
+    margin-left: auto;
+  }
+  
+}  //.prduct_names
+
+.head_hr{
+  margin:{
+    top: 20px;
+    bottom: 15px; 
+  };
+}
+
+.products_main {
+  background-color: white;
+}
+
+.product_explanation {
+  padding: {
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+  }
+  
+  h6 {
+    color: $keycolor;
+    font-weight: bold;
+    margin: 4px 0;
+    span {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .brown_hr {
+   border-top: 1px $keycolor solid;
+   margin: 10px 0;
+  } 
+  
+  p {
+    margin-top: 10px;
+  }
+  
+} //.product_explanation
+
+.tabs__content section {
+  display: none;
+}
+
+.tabs__content section.active {
+  display: block;
+}
+
+.product_flex {
+  @media (max-width: 550px){
+    padding:{
+        left: 6%;
+        right: 6%; 
+      }
+  }
+  
+  @media (min-width: 550px){
+    @include display-flex;
+  
+    .large_images {
+      flex: 57%;
+      padding:{
+        left: 10%;
+        right: 2%; 
+      }
+    }
+    
+    .small_images_tab {
+      flex: 20%;
+      padding-right: 10%;
+    }
+  }
+}
+
+.large_images {
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; //アスペクト比自動調整
+  }
+}
+
+.small_images {
+  @media (max-width: 550px){
+    @include display-flex;
+    flex-wrap: wrap;
+    
+    div {
+      //display: inline;
+      flex: 16%;
+      margin: {
+        top: 3px;
+        bottom: 5px;
+      }
+    }
+    
+    div:not(:nth-child(5n)) {
+        margin-right: 8px;
+      }
+    
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover; //アスペクト比自動調整
+    }
+  }
+ 
+  @media (min-width: 550px){
+    @include display-flex;
+    flex-wrap: wrap;
+    
+    div {
+      //display: inline;
+      flex: 40%;
+      margin-bottom: 7%;
+    }
+    
+    div:not(:nth-child(2n)) {
+        margin-right: 7%;
+      }
+    
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover; //アスペクト比自動調整
+    }
+  }
+}
+
+.above {
+  margin: 0;
+}
+
+.price_quantiity {
+  width: 100%;
+  
+  th {
+    padding-bottom: 0;
+  }
+
+  .yen {
+    color: red;
+  }
+  
+  .sum {
+    color: red;
+    font-size: 2.7rem;
+  }
+  
+  form {
+    margin-bottom: 10px;
+  }
+
+}  //.price_quantiity 
+
+.quant_th {
+    padding-top: -20px;
+  }
+    
+.quantity_form {
+  width: 100%;
+  margin-bottom: -30px;
+}
+
+.color_size {
+  table {
+    width: 100%;
+  }
+  
+  table th, table td {
+    border: solid 1px #e2ddd4;
+  }
+  
+  table th {
+    background-color: #f9f8f6;
+    text-align: center;
+    color: $keycolor;
+  }
+  
+/* ボックスのサイズ */
+  td {
+    input[type=checkbox] {
+      @include scale(1.5);  //transform: scale(1.5, 1.5); をCSSに精製
+    }
+    
+    text-align: center;
+  }
+}  //.color_size
+
+.color_size_explanation {
+  table {
+    width: 100%;
+  }
+  
+  table th, table td {
+    color: $keycolor;
+    border: solid 1px #e2ddd4;
+  }
+  
+  table th {
+    background-color: #f9f8f6;
+    padding: 0 46px;
+    text-align: center;
+  }  
+}　//.color_size_explanation
+
+.detail {
+  width: 100%;
+  
+  margin:{
+    left: 0;
+    right: 0;
+  }
+}
+
+.add_to_cart_section {
+  text-align: center;
+  
+  @media (max-width: 550px){
+    margin-bottom: 12px;
+  }
+}
+
+.add_to_cart {
+  max-width: 100%;
+}
+
+.title_line_top_toppage {
+  @media (max-width: 550px){
+    margin-top: -4rem;
+  }
+}
+
+.title_line_top {
+  margin:{
+    top: 0px;
+    bottom: 6px;
+  }
+  max-width: 100%;
+}
+
+.title_line {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.title_line_p {
+  text-align: center;
+  margin-bottom: 15px;
+  @media (max-width: 550px){
+    margin-bottom: 8px;
+  }
+}
+
+.title_line_new_item {
+  max-width: 40%;
+  margin:{
+    top: 30px;
+    bottom: 5px;
+  };
+}
+
+.title_line_sp {
+  max-width: 55%;
+  margin:{
+    top: 20px;
+    bottom: 5px;
+  };
+}
+
+.title_line_recent {
+  max-width: 30%;
+}
+
+@media (min-width: 550px){
+  .title_line_sp {
+    display: none;
+  }
+.title_line_new_item {
+    display: none;
+  }
+}
+
+@media (max-width: 550px){
+  .title_line_top {
+    display: none;
+  }
+  
+  .title_line {
+    display: none;
+  }
+}
+
+//ヘッダー切り替え
+@media (max-width: 550px){  //ロゴ・ナビバーPC
+  .header_in {
+    display: none;
+  }
+}
+
+@media (min-width: 550px){  //ロゴ・ナビバーSP
+  .header_in_sp {
+    display: none;
+  }
+}
+
+.sp_navi_humberger {
+  display: none;
+  position: absolute; //これがrerativeだと、全てが下にスライドしてしまう
+  z-index: 999;  //重なり順。数字が大きいほど上になる
+  width: 100%;  //指定しないと、なぜか幅が50%になる
+  
+  ul {
+    list-style: none;
+    background-color: #ff6d77;
+    padding: 20px;
+  }
+  
+  .border {
+    border-bottom: solid 1px white;
+  }
+  
+  a {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    padding-bottom: 8px;
+  }
+}  //.sp_navi_humberger
+
+.cate_image { // listページのトップ画像
+  width: 100%;
+  margin-bottom: 2px;
+}
+        
+.back_next {
+  @include display-flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  
+  div {
+    background-color: $keycolor;
+    padding: 10px 36px;
+      
+    &:hover {
+      cursor: pointer;
+    }
+    
+    a {
+      font-weight: bold;
+      letter-spacing: 1px;
+      
+      color: white;
+      text-transform: uppercase;  //大文字に指定
+    }
+    
+  } //div
+  
+  @media (max-width: 550px){
+    div{
+      padding: 14px 40px;
+      background-color: $keycolor;
+    }
+    
+    a {
+      font-size: 2rem;
+    }
+  }
+}  //.back_next
+
+
